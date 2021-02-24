@@ -6,6 +6,7 @@ import android.view.View;
 import com.yeskov.anyhelper.R;
 import com.yeskov.anyhelper.adapters.RecyclerAdapter;
 import com.yeskov.anyhelper.adapters.RecyclerModel;
+import com.yeskov.anyhelper.dp.entity.ToolEntity;
 import com.yeskov.anyhelper.ui.BaseFragment;
 import com.yeskov.anyhelper.utils.Constants;
 
@@ -31,9 +32,11 @@ public class HomeFragment extends BaseFragment {
 
         List<RecyclerModel> models = new ArrayList<>();
 
-        for(int i = 0; i < 10; i++){
-            models.add(new RecyclerModel(Constants.HOME_ITEM));
-        }
+        ToolEntity tool = new ToolEntity();
+        tool.setFragmentId(R.id.noteFragment);
+        tool.setName("Note");
+
+        models.add(new RecyclerModel(Constants.HOME_ITEM, tool));
         models.add(new RecyclerModel(Constants.PLUS_ITEM));
 
         RecyclerAdapter ordersAdapter = new RecyclerAdapter(this, models);

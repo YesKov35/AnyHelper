@@ -11,4 +11,12 @@
         android:id="@+id/searchFragment"
         android:name="com.yeskov.anyhelper.ui.search.SearchFragment"
         android:label="SearchFragment" />
+    <fragment
+        android:id="@+id/noteFragment"
+        android:name="com.yeskov.anyhelper.ui.tools.note.NoteFragment"
+        android:label="NoteFragment" />
+    <fragment
+        android:id="@+id/noteEditFragment"
+        android:name="com.yeskov.anyhelper.ui.tools.note.NoteEditFragment"
+        android:label="NoteEditFragment" />
 </navigation>

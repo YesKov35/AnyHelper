@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AnyHelper</string>
+    <string name="tool_note_edit_hint">Введите текст…</string>
 </resources>
