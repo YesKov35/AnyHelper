@@ -59,6 +59,10 @@ public class NoteEditFragment extends BaseFragment {
             note.setText(text.getText().toString());
             note.setDate(Calendar.getInstance().getTimeInMillis());
 
+            if(dataRepository.getNoteEntity() != null){
+                note.setId(dataRepository.getNoteEntity().getId());
+            }
+
             Completable.fromAction(() -> dataRepository.getDb().noteDao().insert(note)).observeOn(AndroidSchedulers.mainThread())
                     .subscribeOn(Schedulers.io()).subscribe(new CompletableObserver() {
                 @Override
@@ -78,6 +82,8 @@ public class NoteEditFragment extends BaseFragment {
             });
         });
 
-
+        if(dataRepository.getNoteEntity() != null){
+            text.setText(dataRepository.getNoteEntity().getText());
+        }
     }
 }

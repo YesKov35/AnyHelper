@@ -37,6 +37,8 @@ public class NoteFragment extends BaseFragment {
 
         recyclerView = $(R.id.recycler_view);
 
+        dataRepository.setNoteEntity(null);
+
         dataRepository.getDb().noteDao().getAll().observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io()).subscribe(new SingleObserver<List<NoteEntity>>() {
             @Override
@@ -92,5 +94,10 @@ public class NoteFragment extends BaseFragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(ordersAdapter);
+    }
+
+    public void selectNote(NoteEntity note){
+        dataRepository.setNoteEntity(note);
+        Navigation.findNavController(requireView()).navigate(R.id.noteEditFragment, null, NavigationUtils.getNavOptions());
     }
 }

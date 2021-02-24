@@ -5,7 +5,9 @@ import android.content.Context;
 
 import com.yeskov.anyhelper.data.di.DataModule;
 import com.yeskov.anyhelper.data.di.Scopes;
+import com.yeskov.anyhelper.dp.AppDatabase;
 
+import androidx.room.Room;
 import toothpick.Toothpick;
 import toothpick.configuration.Configuration;
 
@@ -13,6 +15,8 @@ public class App extends Application {
 
     private static Context appContext;
     public static App instance;
+
+    private AppDatabase database;
 
     public static Context getAppContext() {
         return appContext;
@@ -24,6 +28,9 @@ public class App extends Application {
         appContext = getApplicationContext();
 
         instance = this;
+
+        database = Room.databaseBuilder(this, AppDatabase.class, "database")
+                .build();
 
         initToothpick();
         initScopes();
@@ -44,5 +51,9 @@ public class App extends Application {
 
     public static App getInstance() {
         return instance;
+    }
+
+    public AppDatabase getDatabase() {
+        return database;
     }
 }

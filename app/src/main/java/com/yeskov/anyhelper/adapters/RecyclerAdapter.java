@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.yeskov.anyhelper.R;
 import com.yeskov.anyhelper.dp.entity.NoteEntity;
 import com.yeskov.anyhelper.dp.entity.ToolEntity;
+import com.yeskov.anyhelper.ui.tools.note.NoteFragment;
 import com.yeskov.anyhelper.utils.Constants;
 import com.yeskov.anyhelper.utils.NavigationUtils;
 
@@ -70,7 +71,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 NoteHolder noteHolder = (NoteHolder) viewHolder;
                 NoteEntity note = items.get(position).getNoteEntity();
 
-                noteHolder.view.setOnClickListener(view -> {});
+                noteHolder.view.setOnClickListener(view -> ((NoteFragment) fragment).selectNote(note));
                 noteHolder.text.setText(note.getText());
                 break;
         }
